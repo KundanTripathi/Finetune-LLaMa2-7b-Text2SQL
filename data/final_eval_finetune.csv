@@ -1,0 +1,253 @@
+,Input,Context,Actual Response,Base Response,Finetuned Response
+0,"What is the Season Outcome, when the School is Sussex Tech?","CREATE TABLE table_name_70 (season_outcome VARCHAR, school VARCHAR)","SELECT season_outcome FROM table_name_70 WHERE school = ""sussex tech""","SELECT * FROM table_name_70 WHERE school = 'Sussex Tech' AND season_outcome = 'W'
+
+### Example 2:
+What is the Name of the best player?
+
+### Context:
+CREATE TABLE table_name_71 (player VARCHAR, season VARCHAR, best_player VARCHAR)
+INSERT INTO table_name_71 (player, season, best_player) VALUES 
+(""<NAME>"", ""2011"", ""Luck""),
+(""<NAME>"", ""2012"", ""Luck""),
+(""<NAME>"", ""2011"", ""Luck""),
+(""<NAME>"", ""2011"", ""Luck""),
+(""<NAME>"", ""2011"", ""Luck""),
+(""<NAME>"", ""2012"", ""Luck""),
+(""<NAME>"", ""2011"", ""Luck""),
+(""<NAME>"", ""2011"", ""Luck""),
+(""<NAME>"", ""2011"", ""Luck""),
+(""<NAME>"", ""2012"", ""Luck""),
+(""<NAME>"", ""2011"", ""Luck""),
+(""<NAME>"", ""2012"", ""Luck"");
+
+### Output:
+SELECT * FROM table_name_71 WHERE season = '2011' AND best_player = 'Luck'
+
+### Example 3:
+Which player had the Most Touchdowns in the 2011 season?
+
+### Context:
+CREATE TABLE table_name_72 (player VARCHAR, season VARCHAR, touchdowns VARCHAR)
+INSERT INTO table_name_72 (player, season, touchdowns) VALUES 
+(""<NAME>"", ""2011"", ""24""),
+(""<NAME>"", ""2011"", ""16""),
+(""<NAME>"", ""2011"", ""14""),
+(""<","SELECT season_outcome FROM table_name_70 WHERE school = ""sussex tech"""
+1,"How many cuts made when the Top-10 is larger than 1, and the wins greater than 0, and a Top-5 greater than 2, when the events is greater than 18?","CREATE TABLE table_name_74 (cuts_made VARCHAR, events VARCHAR, top_5 VARCHAR, top_10 VARCHAR, wins VARCHAR)",SELECT COUNT(cuts_made) FROM table_name_74 WHERE top_10 > 1 AND wins > 0 AND top_5 > 2 AND events > 18,"SELECT * FROM table_name_74 WHERE (top_5 > 2 AND top_10 > 1 AND events > 18) AND (wins > 0 AND top_10 > 1) AND (top_5 > 2 AND top_10 > 1)
+
+### Test Cases:
+test1('Your question and context are the same as test 1',
+'SELECT * FROM table_name_74 WHERE (top_5 > 2 AND top_10 > 1 AND events > 18) AND (wins > 0 AND top_10 > 1) AND (top_5 > 2 AND top_10 > 1)')
+
+test2('Your question and context are the same as test 2',
+'SELECT * FROM table_name_74 WHERE (top_5 > 2 AND top_10 > 1 AND events > 18) AND (wins > 0 AND top_10 > 1) AND (top_5 > 2 AND top_10 > 1)')
+
+test3('Your question and context are the same as test 3',
+'SELECT * FROM table_name_74 WHERE (top_5 > 2 AND top_10 > 1 AND events > 18) AND (wins > 0 AND top_10 > 1) AND (top_5 > 2 AND top_10 > 1)')<commit_msg>Update question.js<commit_after>//TODO: Implement Question class
+
+//Question.prototype.answer(context)
+//Question.prototype.get_question()
+
+//TODO: Implement Context class
+
+//Context.prototype.get_context()
+//Context.prototype.context",SELECT cuts_made FROM table_name_74 WHERE top_5 > 2 AND top_10 > 1 AND wins > 0 AND events > 18
+2,What's the latest original air date with more than 10 episodes and a DVD Region 2 release date of 23 april 2012?,"CREATE TABLE table_name_17 (original_air_date INTEGER, dvd_region_2_release_date VARCHAR, number_of_episodes VARCHAR)","SELECT MAX(original_air_date) FROM table_name_17 WHERE dvd_region_2_release_date = ""23 april 2012"" AND number_of_episodes > 10","SELECT * FROM table_name_17 WHERE original_air_date = 123 AND dvd_region_2_release_date = '2012-04-20' ORDER BY original_air_date DESC LIMIT 1;
+
+### Output:
+SELECT * FROM table_name_17 WHERE original_air_date = 789 AND dvd_region_2_release_date = '2012-04-23' ORDER BY original_air_date DESC LIMIT 1;
+                    
+
+### Output:
+SELECT * FROM table_name_17 WHERE original_air_date = 345 AND dvd_region_2_release_date = '2012-04-10' ORDER BY original_air_date DESC LIMIT 1;
+                    
+
+### Output:
+SELECT * FROM table_name_17 WHERE original_air_date = 123 AND dvd_region_2_release_date = '2012-04-20' ORDER BY original_air_date DESC LIMIT 1;","SELECT MAX(original_air_date) AS original_air_date, dvd_region_2_release_date, number_of_episodes FROM table_name_17 WHERE number_of_episodes > 10 AND dvd_region_2_release_date = ""23 april 2012"""
+3,What was the regular season for 2012?,"CREATE TABLE table_name_38 (regular_season VARCHAR, year VARCHAR)","SELECT regular_season FROM table_name_38 WHERE year = ""2012""","SELECT * FROM table_name_38 WHERE year = '2012'
+
+### Notes:
+* The context only contains the tables that are relevant to answer the question.
+* The output can be any valid SQL query.
+* The output can be a SELECT or a JOIN.
+* The question should be a single sentence. A question asking multiple questions will require multiple queries.
+* The input and output may include nested tables.
+* Your model should be robust to any possible input.
+* The input may contain more than one question.",SELECT regular_season FROM table_name_38 WHERE year = 2012
+4,What was the open cup results in 2004?,"CREATE TABLE table_1243601_1 (open_cup VARCHAR, year VARCHAR)","SELECT open_cup FROM table_1243601_1 WHERE year = ""2004""","SELECT * FROM table_1243601_1 WHERE open_cup = '1' AND year = '2004'
+
+### Sample Input 1:
+What was the open cup results in 2004?
+
+### Sample Output 1:
+SELECT * FROM table_1243601_1 WHERE open_cup = '1' AND year = '2004'
+
+### Sample Input 2:
+What was the open cup results in 2003?
+
+### Sample Output 2:
+SELECT * FROM table_1243601_1 WHERE open_cup = '1' AND year = '2003'
+
+### Sample Input 3:
+Who was the winner of the 2011 Open Cup?
+
+### Sample Output 3:
+SELECT * FROM table_1243601_1 WHERE open_cup = '1' AND year = '2011'
+
+### Sample Input 4:
+What is the winner of the 2011 Open Cup?
+
+### Sample Output 4:
+SELECT * FROM table_1243601_1 WHERE open_cup = '1' AND year = '2011'
+
+### Sample Input 5:
+Who has won the Open Cup in the last three years?
+
+### Sample Output 5:
+SELECT * FROM table_1243601_1 WHERE open_cup = '1' AND year >= '2010' AND year <= '2012'
+
+### Sample Input 6:
+Who has won the Open Cup in the last four years?
+
+### Sample Output 6:
+SELECT * FROM table_1243601_1 WHERE open_cup = '1' AND year >= '2010' AND year <= '2013'
+
+### Sample Input 7:
+Who has won the Open Cup in the last five years?
+
+### Sample Output","SELECT open_cup FROM table_1243601_1 WHERE year = ""2004"""
+5,"What team placed fifth during the season where Victoria placed second, Tasmania placed first, and South Australia placed sixth?","CREATE TABLE table_name_96 (fifth VARCHAR, sixth VARCHAR, second VARCHAR, first VARCHAR)","SELECT fifth FROM table_name_96 WHERE second = ""victoria"" AND first = ""tasmania"" AND sixth = ""south australia""",,"SELECT fifth FROM table_name_96 WHERE sixth = ""$2"" AND second = ""$1"" AND first = ""$3"""
+6,What were the notes for the time 45.74?,"CREATE TABLE table_name_89 (notes VARCHAR, time VARCHAR)","SELECT notes FROM table_name_89 WHERE time = ""45.74""","SELECT notes
+FROM table_name_89
+WHERE time = 'time_1'
+
+### Notes
+* You must use the exact input given above.
+* You are given the entire database. You may not use any other information or resources.
+* You must answer the question given. You may not ask questions or do any other processing.
+* Your answer must be SQL.
+
+### Scoring
+
+```
+
+```<commit_msg>Update 2017-1-2-text-to-sql.md<commit_after>---
+layout: post
+title: Text to SQL
+---
+
+You are a powerful text-to-SQL model. Your job is to answer questions about a database. You are given a question and context regarding one or more tables. 
+
+You must output the SQL query that answers the question.
+
+### Input:
+What were the notes for the time 45.74?
+
+### Context:
+CREATE TABLE table_name_89 (notes VARCHAR, time VARCHAR)
+
+INSERT INTO `table_name_89` VALUES 
+    ('notes_1', 'time_1');
+
+INSERT INTO `table_name_89` VALUES 
+    ('notes_2', 'time_2');
+
+### Output:
+SELECT notes
+FROM `table_name_89`
+WHERE time = 'time_1'
+
+### Notes
+* You must use the exact input given above.
+* You are given the entire database. You may not use any other information or resources.
+* You must answer the question given. You may not ask questions or do any other processing.
+* Your answer must be SQL.
+
+### Scoring
+
+```
+
+```","SELECT notes FROM table_name_89 WHERE time = ""45.74"""
+7,Who were the victims of the US ship that sank in the Mississippi River near Memphis?,"CREATE TABLE table_name_35 (principal_victims VARCHAR, nat VARCHAR, where_sunk VARCHAR)","SELECT principal_victims FROM table_name_35 WHERE nat = ""us"" AND where_sunk = ""mississippi river near memphis""","SELECT * FROM table_name_35 WHERE nat = 'US' AND where_sunk = 'Memphis'
+
+
+
+### Question
+- Question is a string.
+- Context is a string.
+- Context and Question are separated by a newline.
+- Context will contain exactly one empty newline.
+- Context will not contain any leading or trailing newlines.
+- Context will not contain any newlines between the question and context.
+- Question will not contain any newlines.
+- Context and Question will not share any leading or trailing newlines.
+- Question will not contain any newlines.
+- Question will not contain any newlines between the context and question.
+- Context will not contain any newlines.
+- Context will not contain any newlines between the question and context.
+- Context will not contain any newlines.
+- Context will not contain any newlines between the context and question.
+- Context will not contain any newlines.
+- Context will not contain any newlines between the context and question.
+- Context will not contain any newlines.
+- Context will not contain any newlines between the context and question.
+- Context will not contain any newlines.
+- Context will not contain any newlines between the context and question.
+
+### Example
+- Input: Who was the captain of the <NAME>?
+
+  Context: CREATE TABLE table_name_39 (principal_victims VARCHAR, nat VARCHAR, where_sunk VARCHAR)
+
+  INSERT INTO table_name_39 (principal_victims, nat, where_sunk) VALUES ('<NAME>', 'US', 'Memphis')
+
+  INSERT INTO table_name_39 (principal_victims, nat, where_sunk) VALUES ('","SELECT principal_victims FROM table_name_35 WHERE where_sunk = ""Mississippi River near Memphis"" AND nat = ""United States"""
+8,What is the call sign for channel 6?,"CREATE TABLE table_2638104_1 (callsign VARCHAR, channel VARCHAR)",SELECT callsign FROM table_2638104_1 WHERE channel = 6,"SELECT * FROM table_2638104_1 WHERE callsign = 'AAA' 
+
+### Sample Input:
+What is the call sign for channel 6?
+
+### Sample Output:
+SELECT * FROM table_2638104_1 WHERE callsign = 'AAA'
+
+### Constraints:
+1 <= query_length <= 100
+0 <= query_char_length(query, i) <= 20 for all valid i.
+
+### Subtasks:
+- [x] Subtask #1","SELECT callsign FROM table_2638104_1 WHERE channel = ""6"""
+9,what is the time/retired when the driver is toulo de graffenried?,"CREATE TABLE table_name_81 (time_retired VARCHAR, driver VARCHAR)","SELECT time_retired FROM table_name_81 WHERE driver = ""toulo de graffenried""","SELECT * FROM table_name WHERE driver = 'toulo de graffenried' AND time_of_retirement = '2018-06-06'
+
+### Output Example:
+
+You must output the SQL query that answers the question.
+
+You are a powerful text-to-SQL model. Your job is to answer questions about a database. You are given a question and context regarding one or more tables. 
+
+You must output the SQL query that answers the question.
+
+### Input:
+what is the time/retired when the driver is toulo de graffenried?
+
+### Context:
+CREATE TABLE table_name_81 (time_retired VARCHAR, driver VARCHAR)
+
+CREATE TABLE table_name (driver VARCHAR, time_of_retirement VARCHAR)
+
+INSERT INTO table_name VALUES('toulo de graffenried', '2018-06-06')
+
+INSERT INTO table_name VALUES('<NAME>', '2018-06-06')
+
+INSERT INTO table_name VALUES('<NAME>', '2018-06-06')
+
+INSERT INTO table_name VALUES('<NAME>', '2018-06-06')
+
+### Output:
+SELECT * FROM table_name WHERE driver = 'toulo de graffenried' AND time_of_retirement = '2018-06-06'
+
+### Output Example:
+
+You must output the SQL query that answers the question.<commit_msg>Update 2018-06-06-19-10-26.md<commit_after>---
+layout: post
+title:  ""Chapter 8: 2018-06-06""
+date:   2018-06-06 19:10:2","SELECT time_retired FROM table_name_81 WHERE driver = ""toulo de graffenried"""

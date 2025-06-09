@@ -94,10 +94,11 @@ pipe = pipeline(task="text-generation", model=model_new_sql, tokenizer=tokenizer
 result = pipe(prompt)
 print(result[0]['generated_text'])""" </pre>
 
-### Further Improvement in the process
+### Other Techniques of Finetuning
 
 ---
 
-1. Having eval set <br>
-2. Using fsdp for sharding <br>
+1. Having eval set in SFT<br>
+2. Using fsdp for sharding and instead of QLoRA try full Finetuning<br>
+3. Apply other finetuning Techniques like AdaLoRA, DoRA etc. <br>
 3. Using Custom Kernel for Layer Normalization and Attention in Triton or CUDA <br>
